@@ -18,9 +18,9 @@ https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 Run
 
 ```commandline
-mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
-cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
-curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/simulation_demo/compose.yml
+mkdir -p ~/sas_workspace/docker/sas_ur_TAMP/simulation_demo
+cd ~/sas_workspace/docker/sas_ur_TAMP/simulation_demo
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_TAMP/refs/heads/main/.devel/simulation_demo/compose.yml
 
 xhost +local:root
 docker compose up
@@ -38,6 +38,9 @@ docker compose up
 > sudo ufw allow 23000
 > ```
 
+---
+
+# This is Still In-progress
 
 ### Real robot
 
