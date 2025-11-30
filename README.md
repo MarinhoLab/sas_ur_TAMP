@@ -1,4 +1,4 @@
-# SAS UR Control Template
+# SAS UR TAMP
 
 > [!TIP]
 > Repository for this template: https://github.com/MarinhoLab/sas_ur_control_template \
