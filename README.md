@@ -1,11 +1,11 @@
 # SAS UR TAMP
 
-> [!TIP]
-> Repository for this template: https://github.com/MarinhoLab/sas_ur_control_template \
-> More information about SmartArmStack is available in https://smartarmstack.github.io/.
+This repository runs docker which enables the simulation and robot control of UR3e for simple rearrangement of items.
 
-This is a control template for [Universal Robots](https://www.universal-robots.com) robotic manipulators. It relies on [`sas_robot_driver_ur`](https://github.com/MarinhoLab/sas_robot_driver_ur) to communicate
-with the robot via [URCL](https://github.com/UniversalRobots/Universal_Robots_Client_Library).
+pre-requisitrtes :
+
+1. Docker installed
+2. x86 system, mac systems have issues running this 
 
 ## Docker
 
