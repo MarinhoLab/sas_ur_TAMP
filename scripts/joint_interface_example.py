@@ -74,9 +74,17 @@ def main(args=None):
         # For some iterations. Note that this can be stopped with CTRL+C.
         for i in range(0, 5000):
             clock.update_and_sleep()
+            
+            robot_delta = deg2rad([1.0 * sin(i / (50.0 * pi))] * 6)
+            target_joint_positions_robot = joint_positions[0:6] + robot_delta
 
-            # Move the joints
-            target_joint_positions = joint_positions + deg2rad([10.0 * sin(i / (50.0 * pi))] * 6)
+            gripper_delta = deg2rad([20.0 * sin(i / (50.0 * pi))] * 2)
+            target_joint_positions_gripper = joint_positions[6:8] + gripper_delta
+
+            # # Move the joints
+            # target_joint_positions_robot = joint_positions[0:5] + deg2rad([10.0 * sin(i / (50.0 * pi))] * 6)
+
+            target_joint_positions = np.concatenate((target_joint_positions_robot, target_joint_positions_gripper))
             # print(target_joint_positions)
             rdi.send_target_joint_positions(target_joint_positions)
 
