@@ -78,8 +78,9 @@ def main(args=None):
             robot_delta = deg2rad([1.0 * sin(i / (50.0 * pi))] * 6)
             target_joint_positions_robot = joint_positions[0:6] + robot_delta
 
-            gripper_delta = deg2rad([20.0 * sin(i / (50.0 * pi))] * 2)
-            target_joint_positions_gripper = joint_positions[6:8] + gripper_delta
+            # gripper_delta = deg2rad([20.0 * sin(i / (50.0 * pi))] * 2)
+            gripper_delta_list = deg2rad([-20.0 * sin(i / (50.0 * pi)),20.0 * sin(i / (50.0 * pi))])
+            target_joint_positions_gripper = joint_positions[6:8] + gripper_delta_list
 
             # # Move the joints
             # target_joint_positions_robot = joint_positions[0:5] + deg2rad([10.0 * sin(i / (50.0 * pi))] * 6)
