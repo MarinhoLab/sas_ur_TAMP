@@ -31,3 +31,8 @@ services:
 
 volumes:
   sas-ur-control-template-repo-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/sinannaseel/testing/sas_workspace/docker/sas_ur_TAMP/simulation_demo/workspace
