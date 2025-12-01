@@ -18,7 +18,7 @@ https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 Run
 
 ```commandline
-mkdir -p ~/sas_workspace/docker/sas_ur_TAMP/simulation_demo
+mkdir -p ~/sas_workspace/docker/sas_ur_TAMP/simulation_demo/workspace
 cd ~/sas_workspace/docker/sas_ur_TAMP/simulation_demo
 curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_TAMP/refs/heads/main/.devel/simulation_demo/compose.yml
 
