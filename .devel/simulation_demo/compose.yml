@@ -8,7 +8,6 @@ services:
     command: /bin/bash -c "
       ros2 launch sas_ur_TAMP \
       simulation_example_py_launch.py \
-      # simulation_example_cpp_launch.py \
       coppeliasim_ip:='host.docker.internal' \
       coppeliasim_timeout:=10000"
 
