@@ -12,6 +12,8 @@ def generate_launch_description():
         "/UR3e/link/joint/link/joint/link/joint",
         "/UR3e/link/joint/link/joint/link/joint/link/joint",
         "/UR3e/link/joint/link/joint/link/joint/link/joint/link/joint",
+        "/gripper/jointL",
+        "/gripper/jointR",
     ]
 
     coppeliasim_ip = LaunchConfiguration('coppeliasim_ip')
@@ -37,8 +39,8 @@ def generate_launch_description():
                 "robot_joint_names": joint_names,
                 "ip": coppeliasim_ip,
                 "port": 23000,
-                "joint_limits_min": [-360.0, -360.0, -360.0, -360.0, -360.0, -720.0],  # The last joint has no limit
-                "joint_limits_max": [360.0, 360.0, 360.0, 360.0, 360.0, 720.0],  # The last joint has no limit
+                "joint_limits_min": [-360.0, -360.0, -360.0, -360.0, -360.0, -720.0, -30, -30],  # The last joint has no limit
+                "joint_limits_max": [360.0, 360.0, 360.0, 360.0, 360.0, 720.0, 30, 30],  # The last joint has no limit
                 "thread_sampling_time_sec": 0.001
             }]
         )
