@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>sas_ur_control_template</name>
+  <name>sas_ur_TAMP</name>
   <version>0.0.0</version>
   <description>A template for code interfacing with `sas_robot_driver_ur`. Change this as needed.</description>
   <maintainer email="murilo.marinho@manchester.ac.uk">Murilo Marinho</maintainer>
