@@ -12,17 +12,17 @@ def generate_launch_description():
 
     robot_driver_coppeliasim_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('sas_ur_control_template'), 'launch'),
+            get_package_share_directory('sas_ur_TAMP'), 'launch'),
             '/_coppeliasim_launch.py'])
     )
 
     return LaunchDescription([
         robot_driver_coppeliasim_launch,
         Node(
-            package='sas_ur_control_template',
+            package='sas_ur_TAMP',
             executable='joint_interface_example.py',
             output='screen',
             emulate_tty=True,
-            name='sas_ur_control_template_joint_interface_example_py'
+            name='sas_ur_TAMP_joint_interface_example_py'
         )
     ])
