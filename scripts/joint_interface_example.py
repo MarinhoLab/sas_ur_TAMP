@@ -31,7 +31,7 @@ from rclpy.node import Node
 
 from math import sin, pi
 
-import numpy
+import numpy as np
 from dqrobotics import *  # Despite what PyCharm might say, this is very much necessary or DQs will not be recognized
 from dqrobotics.utils.DQ_Math import deg2rad
 
