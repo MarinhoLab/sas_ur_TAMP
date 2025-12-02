@@ -5,7 +5,13 @@ This repository runs docker which enables the simulation and robot control of UR
 pre-requisitrtes :
 
 1. Docker installed
-2. x86 system, mac systems have issues running this 
+2. x86 system, mac systems have issues running this
+
+To make changes and use the docker container again make sure you clean everything (including the cache too)
+
+```bash
+docker compose down -v
+```
 
 ## Docker
 
