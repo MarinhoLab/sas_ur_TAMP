@@ -33,7 +33,9 @@ services:
     build: https://github.com/MarinhoLab/sas_ur_TAMP.git#main:.devel/tamp
     container_name: coast
     volumes:
-      - coast-repo-data:/root/
+      - coast-repo-data:/root/testing/src/sas_ur_TAMP/
+    command: /bin/bash -c "
+      while true; do echo 'Hello World'; sleep 5; done"
 
 volumes:
   sas-ur-control-template-repo-data:
