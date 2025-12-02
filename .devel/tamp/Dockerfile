@@ -1,9 +1,13 @@
-FROM murilomarinho/sas:jazzy
-LABEL authors="murilomarinho"
+FROM ubuntu:20.04
 SHELL ["/bin/bash", "-c"]
 ENV BASH_ENV="/etc/bash_env"
 
-RUN mkdir -p ~/sas_tutorial_workspace/src
-RUN cd ~/sas_tutorial_workspace/src && git clone https://github.com/MarinhoLab/sas_ur_TAMP.git
-RUN cd ~/sas_tutorial_workspace/src/sas_ur_TAMP/.devel/scripts && chmod +x setup_environment.sh
-RUN cd ~/sas_tutorial_workspace/src/sas_ur_TAMP/.devel/scripts && ./setup_environment.sh
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip3 install flask requests numpy
+RUN mkdir -p ~/testing/src
+RUN cd ~/testing/src && git clone https://github.com/MarinhoLab/sas_ur_TAMP.git
