@@ -14,5 +14,5 @@ RUN cd ~/testing/coast && mkdir -p external && cd external && \
     pip install cmake==3.25 && \
     pip install --no-build-isolation -e . && cd ../..
 
-WORKDIR /root/testing/src
+WORKDIR /root/testing/coast
 CMD ["/bin/bash"]
