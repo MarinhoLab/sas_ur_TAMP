@@ -34,8 +34,6 @@ services:
     container_name: coast
     volumes:
       - coast-repo-data:/root/
-    command: /bin/bash -c "
-
 
 volumes:
   sas-ur-control-template-repo-data:
