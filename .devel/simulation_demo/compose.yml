@@ -29,5 +29,16 @@ services:
       -s0 \
       /root/sas_tutorial_workspace/src/sas_ur_TAMP/scenes/UR3e_480rev0.ttt"
 
+  coast:
+    build: https://github.com/MarinhoLab/sas_ur_TAMP.git#main:.devel/tamp
+    volumes:
+      - coast-repo-data:/root/sas_tutorial_workspace/src/sas_ur_TAMP/
+    command: /bin/bash -c "
+      ros2 launch sas_ur_TAMP \
+      simulation_example_py_launch.py \
+      coppeliasim_ip:='host.docker.internal' \
+      coppeliasim_timeout:=10000"
+    
+
 volumes:
   sas-ur-control-template-repo-data:
