@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ros:foxy-ros-base
 SHELL ["/bin/bash", "-c"]
 ENV BASH_ENV="/etc/bash_env"
 
