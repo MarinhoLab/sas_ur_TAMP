@@ -12,6 +12,12 @@ To make changes and use the docker container again make sure you clean everythin
 ```bash
 docker compose down -v
 ```
+to run again
+
+```bash
+docker compose up
+# docker compose up --build
+```
 
 ## Docker
 
