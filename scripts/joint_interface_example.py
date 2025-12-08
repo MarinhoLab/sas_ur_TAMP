@@ -25,6 +25,8 @@
 # #######################################################################################
 """
 import time
+import json
+import os
 
 import rclpy
 from rclpy.node import Node
@@ -42,6 +44,17 @@ from sas_core import Clock, Statistics
 
 
 def main(args=None):
+    trajectory_path = "/root/trajectories.json"
+    
+    if not os.path.exists(trajectory_path):
+        print(f"Trajectory file NOT FOUND at {trajectory_path}")
+        return
+    
+    with open(trajectory_path, "r") as f:
+        trajectory = json.load(f)
+    
+    print(f"Loaded {len(trajectory)} trajectory points")
+    
     try:
         rclpy.init(args=args)
         rospy_node = Node('sas_robot_driver_ur_joint_space_example_node_py')
@@ -71,19 +84,14 @@ def main(args=None):
         joint_positions = rdi.get_joint_positions()
         print(f"joint positions = {joint_positions}")
 
+        target_joint_positions_gripper = deg2rad([-20.0, 20.0])
+
         # For some iterations. Note that this can be stopped with CTRL+C.
-        for i in range(0, 5000):
+        for point in trajectory:
             clock.update_and_sleep()
-            
-            robot_delta = deg2rad([1.0 * sin(i / (50.0 * pi))] * 6)
-            target_joint_positions_robot = joint_positions[0:6] + robot_delta
 
-            # gripper_delta = deg2rad([20.0 * sin(i / (50.0 * pi))] * 2)
-            gripper_delta_list = deg2rad([-20.0 * sin(i / (50.0 * pi)),20.0 * sin(i / (50.0 * pi))])
-            target_joint_positions_gripper = joint_positions[6:8] + gripper_delta_list
-
-            # # Move the joints
-            # target_joint_positions_robot = joint_positions[0:5] + deg2rad([10.0 * sin(i / (50.0 * pi))] * 6)
+            target_joint_positions_robot = np.array(point)
+    
 
             target_joint_positions = np.concatenate((target_joint_positions_robot, target_joint_positions_gripper))
             # print(target_joint_positions)
