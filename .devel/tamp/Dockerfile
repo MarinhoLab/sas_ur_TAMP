@@ -21,6 +21,39 @@ RUN cd ~/testing/coast &&  cd external && \
     apt-get install -y libboost-all-dev libeigen3-dev liborocos-kdl-dev libnlopt-dev libnlopt-cxx-dev && \
     python3 setup_linux.py install
 
+# this might work !!
+
+sudo apt update
+sudo apt install software-properties-common  ## youll get a prompt for Y
+apt install libboost-all-dev libeigen3-dev liborocos-kdl-dev libnlopt-dev libnlopt-cxx-dev
+python3 setup_linux.py install
+
+
+apt install build-essential cmake
+
+sudo add-apt-repository universe #(i think this didnt work properly)
+sudo apt update
+
+
+
+# apt update && apt install -y \
+#     libboost-dev \
+#     libboost-filesystem-dev \
+#     libboost-system-dev \
+#     libboost-thread-dev \
+#     libboost-chrono-dev \
+#     libboost-regex-dev \
+#     libkdl-dev \
+#     libnlopt-dev
+
+# apt update
+# apt install -y software-properties-common
+# add-apt-repository ppa:orocos/ppa
+# apt update
+# apt install -y liborocos-kdl-dev
+
+
+
 
 WORKDIR /root/testing/coast
 CMD ["/bin/bash"]
