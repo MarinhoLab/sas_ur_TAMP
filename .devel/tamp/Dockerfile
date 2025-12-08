@@ -12,7 +12,13 @@ RUN cd ~/testing/coast && mkdir -p external && cd external && \
     git clone https://github.com/branvu/symbolic.git && \
     cd symbolic && \
     pip install cmake==3.25 && \
-    pip install --no-build-isolation -e . && cd ../..
+    pip install --no-build-isolation -e . && cd ../.. && \
+    git clone https://github.com/chenhaox/pytracik.git && cd pytracik && \
+    pip install -r requirements.txt && \
+    apt-get update && \
+    apt-get install -y libboost-all-dev libeigen3-dev liborocos-kdl-dev libnlopt-dev libnlopt-cxx-dev && \
+    python setup_linux.py install
+    
 
 WORKDIR /root/testing/coast
 CMD ["/bin/bash"]
