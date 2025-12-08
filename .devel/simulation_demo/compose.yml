@@ -34,8 +34,9 @@ services:
     container_name: coast
     volumes:
       - coast-repo-data:/root/testing/src/sas_ur_TAMP/
-    command: /bin/bash -c "
-      while true; do echo 'Hello World'; sleep 5; done"
+  command: /bin/bash -c "
+    while true; do pwd; ls -la; sleep 5; done"
+
 
 volumes:
   sas-ur-control-template-repo-data:
