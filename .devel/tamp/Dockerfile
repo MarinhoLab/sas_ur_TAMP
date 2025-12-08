@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN mkdir -p ~/testing/src
 RUN cd ~/testing && git clone https://github.com/MarinhoLab/coast.git && cd coast && pip install -e .
 RUN cd ~/testing/coast && mkdir -p external && cd external && \
-    git clone --branch coast_changes https://github.com/branvu/pybullet-planning.git && \
+    git clone --branch coast_changes https://github.com/MarinhoLab/pybullet-planning.git && \
     cd pybullet-planning && pip install -e . && cd .. && \
     git clone https://github.com/aibasel/downward.git && \
     cd downward && git checkout bc6cf7a691fa43276f19b92a7c70c3098e7672ef && \
@@ -12,13 +12,15 @@ RUN cd ~/testing/coast && mkdir -p external && cd external && \
     git clone https://github.com/branvu/symbolic.git && \
     cd symbolic && \
     pip install cmake==3.25 && \
-    pip install --no-build-isolation -e . && cd ../.. && \
+    pip install --no-build-isolation -e . && cd .. \
+
+RUN cd ~/testing/coast &&  cd external && \
     git clone https://github.com/chenhaox/pytracik.git && cd pytracik && \
     pip install -r requirements.txt && \
     apt-get update && \
     apt-get install -y libboost-all-dev libeigen3-dev liborocos-kdl-dev libnlopt-dev libnlopt-cxx-dev && \
-    python setup_linux.py install
-    
+    python3 setup_linux.py install
+
 
 WORKDIR /root/testing/coast
 CMD ["/bin/bash"]
