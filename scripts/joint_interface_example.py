@@ -90,7 +90,7 @@ def main(args=None):
         for point in trajectory:
             clock.update_and_sleep()
 
-            target_joint_positions_robot = np.array(point)
+            target_joint_positions_robot = np.array(point).flatten()
     
 
             target_joint_positions = np.concatenate((target_joint_positions_robot, target_joint_positions_gripper))
