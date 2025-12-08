@@ -12,7 +12,7 @@ RUN cd ~/testing/coast && mkdir -p external && cd external && \
     git clone https://github.com/branvu/symbolic.git && \
     cd symbolic && \
     pip install cmake==3.25 && \
-    pip install --no-build-isolation -e . && cd .. \
+    pip install --no-build-isolation -e .
 
 RUN cd ~/testing/coast &&  cd external && \
     git clone https://github.com/chenhaox/pytracik.git && cd pytracik && \
