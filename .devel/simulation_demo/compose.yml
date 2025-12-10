@@ -2,10 +2,15 @@ services:
   sas_ur_control_template:
     build: https://github.com/MarinhoLab/sas_ur_TAMP.git#main:.devel/sas_ur_control_template
     volumes:
+      - trajectory-share:/shared
       - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_TAMP/
     extra_hosts:
       - "host.docker.internal:host-gateway"
     command: /bin/bash -c "
+      echo 'Waiting for trajectory file...'; \
+      while [ ! -f /shared/trajectories.json ]; do sleep 1; done; \
+      cp /shared/trajectories.json /root/trajectories.json; \
+      echo 'Copied trajectories.json into /root'; \
       ros2 launch sas_ur_TAMP \
       simulation_example_py_launch.py \
       coppeliasim_ip:='host.docker.internal' \
@@ -33,11 +38,22 @@ services:
     build: https://github.com/MarinhoLab/sas_ur_TAMP.git#main:.devel/tamp
     container_name: coast
     volumes:
+      - trajectory-share:/shared
       - coast-repo-data:/root/testing/src/sas_ur_TAMP/
     command: /bin/bash -c "
-      while true; do echo 'Hello World'; sleep 5; done
+      python3 envs/kuka/run.py; \
+      sleep 5; \
+      file=$$(find / -name 'trajectories.json' 2>/dev/null | head -n 1); \
+      if [ -n \"$$file\" ]; then \
+        mv \"$$file\" /shared/trajectories.json; \
+        echo \"Moved trajectories.json from $$file to /shared\"; \
+      else \
+        echo \"trajectories.json NOT FOUND anywhere\"; \
+      fi; \
+      while true; do echo 'hello'; sleep 1; done"
 
 
 volumes:
   sas-ur-control-template-repo-data:
   coast-repo-data:
+  trajectory-share:
