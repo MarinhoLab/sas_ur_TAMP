@@ -66,7 +66,7 @@ def main(args=None):
         roscpp_node = rclcpp_Node("sas_robot_driver_ur_joint_space_example_node_cpp")
        
         # 10 ms clock
-        clock = Clock(0.01)
+        clock = Clock(0.1)
         clock.init()
 
         # Initialize the RobotDriverClient
