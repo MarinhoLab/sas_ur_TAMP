@@ -51,9 +51,9 @@ def main(args=None):
         return
     
     with open(trajectory_path, "r") as f:
-        trajectory = json.load(f)
+        trajectories = json.load(f)
     
-    print(f"Loaded {len(trajectory)} trajectory points")
+    print(f"Loaded {len(trajectories)} trajectory points")
     
     try:
         rclpy.init(args=args)
@@ -87,17 +87,22 @@ def main(args=None):
         target_joint_positions_gripper = deg2rad([-20.0, 20.0])
 
         # For some iterations. Note that this can be stopped with CTRL+C.
-        for point in trajectory:
-            clock.update_and_sleep()
+        for trajectory in trajectories:
+            for q in trajectory:
+                clock.update_and_sleep()
+                q = np.array(q)
+                q[2] = (q[2])* -1  # (change the rotation)
+                q[3] = q[3] * -1  # (change the rotation)
+                q[4] = q[4] + (3.14)  # (change the rotation)
 
-            target_joint_positions_robot = np.array(point).flatten()
+                target_joint_positions_robot = q
+        
     
-
-            target_joint_positions = np.concatenate((target_joint_positions_robot, target_joint_positions_gripper))
-            # print(target_joint_positions)
-            rdi.send_target_joint_positions(target_joint_positions)
-
-            rclcpp_spin_some(roscpp_node)
+                target_joint_positions = np.concatenate((target_joint_positions_robot, target_joint_positions_gripper))
+                # print(target_joint_positions)
+                rdi.send_target_joint_positions(target_joint_positions)
+    
+                rclcpp_spin_some(roscpp_node)
 
         # Statistics
         print("Statistics for the entire loop")
