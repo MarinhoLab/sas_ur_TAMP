@@ -5,7 +5,8 @@ services:
     stop_grace_period: 1m
     network_mode: "host" # Reverse connection with UR robot
     volumes:
-      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+      - trajectory-share:/shared
+      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_TAMP/
     environment:
       - ROS_DOMAIN_ID
     cap_add:
